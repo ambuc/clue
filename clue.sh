@@ -28,7 +28,12 @@ csplit $cluepath --prefix=$cluedir /$cluesep/ {*} --quiet --suppress-matched
 
 sed -i -e :a -e '/./,$!d;/^\n*$/{$d;N;};/\n$/ba' /tmp/clues/*
 
-echo ""
-grep --recursive --no-filename "$cluedir" -e "$1" -C 1000 --color \
-  --group-separator="---------------------------------------------------------------------------------"
-echo ""
+bar="---------------------------------------------------------------------------------"
+
+echo $bar
+grep --recursive --no-filename "$cluedir" -e "$1" -C 1000 --color --group-separator="$bar"
+
+if [ $? == 1 ]; then
+  echo "No clue."
+fi
+
