@@ -1,0 +1,4 @@
+# config file for clues
+
+cluepath=~/.clues
+cluesep="-----"
